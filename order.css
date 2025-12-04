@@ -1,207 +1,161 @@
-/* ====== PAGE STYLE ====== */
-body {
-  font-family: Arial, sans-serif;
-  background: #fff0fa;
+/* ==========================
+   GLOBAL
+=========================== */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-/* ====== NAVBAR ====== */
+body {
+  background: #f7f7f7;
+  color: #333;
+}
+
+/* ==========================
+   NAVBAR
+=========================== */
 nav {
-  background: #ec0cda;
-  padding: 12px 20px;
+  background: #ff4d6d;
+  color: #fff;
+  padding: 14px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(255, 77, 109, 0.35);
 }
 
 nav .logo {
   font-size: 26px;
-  font-weight: bold;
-  color: white;
+  font-weight: 800;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 20px;
-  margin: 0;
+  gap: 25px;
 }
 
 nav ul li a {
   text-decoration: none;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 6px 10px;
+  color: #ffe8ef;
+  font-weight: 600;
+  padding: 6px 12px;
   border-radius: 6px;
+  transition: 0.3s;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-  background: white;
-  color: #ec0cda;
+  background: #fff;
+  color: #ff4d6d;
 }
 
-/* ====== PAGE TITLE ====== */
-h1 {
-  text-align: center;
-  margin-top: 25px;
-  font-size: 28px;
-  color: #444;
-}
-
-/* ====== ORDER LIST CONTAINER ====== */
-.order-list {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 10px;
-}
-
-/* ====== ORDER CARD ====== */
-.order-item {
-  background: #ffffff;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  border-left: 6px solid #ec0cda;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: 0.3s;
-}
-
-.order-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-}
-
-.order-item p {
-  font-size: 15px;
-  margin: 6px 0;
-}
-
-.order-item hr {
-  border: none;
-  border-bottom: 1px solid #ddd;
-  margin: 10px 0;
-}
-
-
-/* ---------------- BUTTONS ---------------- */
-
-.change-btn, 
-.cancelBtn, 
-.deleteBtn {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-right: 10px;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.change-btn {
-  background: #ff9800;
-  color: white;
-}
-
-.cancelBtn {
-  background: #ff3d3d;
-  color: white;
-}
-
-.cancelBtn:disabled {
-  background: grey;
-  cursor: not-allowed;
-}
-
-.deleteBtn {
-  background: #000;
-  color: white;
-}
-
-/* ---------------- POPUP ---------------- */
-
-.edit-popup {
-  display: none; 
-  position: fixed;
-  top: 0;
-  left: 0;
+/* ==========================
+   HERO SECTION
+=========================== */
+.hero {
   width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
+  height: 420px;
+  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  position: relative;
 }
 
-.edit-box {
-  width: 350px;
-  background: white;
-  padding: 25px;
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+
+.hero h2 {
+  position: relative;
+  z-index: 2;
+  font-size: 32px;
+  color: #ffe1ec;
+  background: rgba(0,0,0,0.4);
+  padding: 18px 28px;
   border-radius: 12px;
-  box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+  border-left: 4px solid #ff4d6d;
+  border-right: 4px solid #ff4d6d;
+  backdrop-filter: blur(4px);
 }
 
-.edit-box h2 {
+/* ==========================
+   SECTION WRAPPER
+=========================== */
+.menu {
+  padding: 40px 20px;
   text-align: center;
-  margin-bottom: 15px;
 }
 
-.edit-box label {
-  font-weight: bold;
-  margin-top: 10px;
-  display: block;
+/* ==========================
+   BANNERS
+=========================== */
+.banner {
+  width: 92%;
+  height: 260px;
+  border-radius: 16px;
+  margin: auto;
+  box-shadow: 0 4px 16px rgba(255, 77, 109, 0.25);
+  transition: 0.3s ease;
+  border: 3px solid #ffb3c0;
 }
 
-.edit-box input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.banner:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 22px rgba(255, 77, 109, 0.35);
 }
 
-.saveBtn {
-  width: 100%;
-  background: #28a745;
-  padding: 10px;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
+/* OFFER BANNER */
+.offers-banner {
+  background: url('../Assets/cakesoffer.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
-.closeBtn {
-  width: 100%;
-  background: #777;
-  padding: 10px;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 10px;
+/* PASTRY BANNER */
+.pastry-banner {
+  background: url('../Assets/fbpastry.jpg');
+  background-size: cover;
+  background-position: center;
 }
-/* ====== NO ORDERS TEXT ====== */
-.no-orders {
+
+/* ==========================
+   FOOTER
+=========================== */
+footer {
+  background: #ff4d6d;
+  color: #fff;
   text-align: center;
-  padding: 30px;
-  font-size: 20px;
-  color: #666;
+  padding: 16px;
+  margin-top: 40px;
+  font-weight: 600;
+  border-top: 4px solid #ff9ab0;
 }
 
-/* ====== RESPONSIVE ====== */
-@media (max-width: 600px) {
-  .order-item {
-    padding: 16px;
+/* ==========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .banner {
+    width: 95%;
+    height: 220px;
   }
+  .hero h2 {
+    font-size: 24px;
+  }
+}
 
-  nav ul {
-    gap: 12px;
+@media (max-width: 480px) {
+  .banner {
+    height: 180px;
+  }
+  .hero h2 {
+    font-size: 20px;
+    padding: 10px 18px;
   }
 }
