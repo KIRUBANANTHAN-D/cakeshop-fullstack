@@ -46,8 +46,7 @@
           <p><b>Flovour:</b> ${o.name}</p>
           <p><b>Weight:</b> ${o.size} kg</p>
           <p><b>Price:</b> Rs. ${o.price}</p>
-          <p><b>Message:</b> ${o.msg || "-"}</p>
-          <p><b>Notes:</b> ${o.notes || "-"}</p>
+          
 
           <hr>
 
@@ -62,12 +61,14 @@
 
           <hr>
 
-          <p><b>Payment:</b> ${o.method}</p>
+          <p><b>balance:</b></p>
           <p><b>Order status:</b> 
             <span id="status-${index}" style="color:${o.status === "Cancelled" ? "red" : "green"};">
               ${o.status || "Confirmed"}
             </span>
           </p>
+          <p><b>Message:</b> ${o.msg || "-"}</p>
+          <p><b>Notes:</b> ${o.notes || "-"}</p>
 
           <button class="change-btn" onclick="openEdit(${index})">Change</button>
 
