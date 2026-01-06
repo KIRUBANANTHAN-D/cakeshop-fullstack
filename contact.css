@@ -1,0 +1,187 @@
+/* ==========================
+   GLOBAL
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+body {
+  background: #ffffff;
+  color: #333;
+}
+
+/* ==========================
+   NAVBAR
+=========================== */
+
+
+nav {
+  background: #ffffff;
+  color: #fff;
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(230, 112, 138, 0.35);
+}
+
+nav .logo {
+  font-size: 26px;
+  font-style:italic;
+  color: #e976b5;
+  font-weight: 800;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #82656e;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background: #ffffff;
+  color: #060304;
+}
+
+
+    /* ======================
+       PAGE TITLE + SEARCH
+    ====================== */
+.contact-section {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+  margin-top: 90px; /* ✅ ADD THIS */
+}
+
+    .contact-section h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .search-box {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .search-box input {
+      width: 300px;
+      max-width: 90%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    /* ======================
+       BRANCH CARDS
+    ====================== */
+    .branches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .branch-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    /* 1️⃣ HOVER ANIMATION */
+    .branch-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+    }
+
+    /* 2️⃣ MAIN BRANCH HIGHLIGHT */
+    .main-branch {
+      border: 3px solid #ff4d6d;
+      background: #fff0f4;
+    }
+
+    .main-badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #ff4d6d;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .branch-card h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .branch-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: #c595b0;
+      color: #fff;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .action-btn:hover {
+      background: #e63b59;
+    }
+
+/* ==========================
+   FOOTER
+=========================== */
+footer {
+  background: #ffd8df;
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+  margin-top: 40px;
+  font-weight: 600;
+  border-top: 4px solid #ffffff;
+}
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .branch-card {
+    text-align: center;
+  }
+}

@@ -1,0 +1,21 @@
+from django.urls import path
+from .views import (
+    cake_list_api,
+    cake_detail_api,
+    category_list,
+    branch_list,
+    orders_api,
+    cancel_order,
+)
+
+urlpatterns = [
+    path("cakes/", cake_list_api),
+    path("cakes/<int:id>/", cake_detail_api),
+    path("categories/", category_list),
+    path("branches/", branch_list),
+
+    # 🔥 ONE URL FOR GET + POST
+    path("orders/", orders_api),
+
+    path("orders/<int:pk>/cancel/", cancel_order),
+]

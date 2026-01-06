@@ -1,0 +1,50 @@
+.hero {
+  display: flex;
+  gap: 20px;
+  padding: 30px;
+}
+
+.hero-card {
+  flex: 1;
+  height: 280px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  position: relative;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+
+.menu {
+  padding: 40px 20px;
+}
+.banner {
+  width: 92%;          /* ✅ ADD THIS */
+  height: 260px;
+  margin: auto;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+}
+
+.home-section {
+  padding: 30px;
+}
+
+.banner {
+  height: 260px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+}

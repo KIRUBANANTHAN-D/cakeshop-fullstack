@@ -1,0 +1,167 @@
+/* ==========================
+   GLOBAL
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+body {
+  background: #ffffff;
+  color: #333;
+}
+
+/* ==========================
+   NAVBAR
+=========================== */
+nav {
+  background: #ffffff;
+  color: #fff;
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(230, 112, 138, 0.35);
+}
+
+nav .logo {
+  font-size: 26px;
+  font-style:italic;
+  color: #e976b5;
+  font-weight: 800;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #82656e;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background: #ffffff;
+  color: #060304;
+}
+
+
+/* ------------------------------
+   MENU SECTION
+------------------------------ */
+.menu {
+  text-align: center;
+  padding: 40px 25px;
+}
+
+.menu h1 {
+  color: #ff4d6d;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.menu h2 {
+  color: #333;
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+/* Horizontal Cake Row */
+.cake-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 15px;
+  scroll-behavior: smooth;
+}
+
+.cake-row::-webkit-scrollbar {
+  height: 4px;
+}
+
+.cake-row::-webkit-scrollbar-thumb {
+  background: #ff4d6d;
+  border-radius: 8px;
+}
+
+
+/* --------------------------------------------------------------------------------------*/
+
+
+.cake-card {
+  width: 180px;   
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 12px;
+  box-shadow: 0 3px 15px rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;            
+  text-align:center;
+  height: 260px;              
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.cake-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;         
+  border-radius: 10px;
+}
+
+
+.cake-card h3 {
+  font-size: 16px;
+  margin-top: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.cake-card p {
+  font-size: 15px;
+  color: #000;
+  margin: 5px 0;
+}
+
+
+/* image wrapper */
+.cake-img {
+  position: relative;
+  overflow: hidden;   /* VERY IMPORTANT */
+}
+
+/* BUY NOW – fully hidden */
+.buy-now {
+  position: absolute;
+  left: 50%;
+  bottom: -100%;          /* FULLY OUT */
+  transform: translateX(-50%);
+  background: #f7c600;
+  color: #000;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.4s ease;
+  opacity: 0;             /* EXTRA SAFETY */
+}
+
+/* CARD hover */
+.cake-card:hover .buy-now {
+  bottom: 15px;
+  opacity: 1;
+}
+
+
+/* --------------------------------------------------------------------------------------*/
