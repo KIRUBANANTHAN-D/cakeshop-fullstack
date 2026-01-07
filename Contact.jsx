@@ -11,13 +11,10 @@ function Contact() {
       .then((data) => setBranches(data))
       .catch((err) => console.error(err));
   }, []);
-
   return (
     <>
       <section className="contact-section">
         <h1>OUR BRANCHES</h1>
-
-        {/* SEARCH */}
         <div className="search-box">
           <input
             type="text"
@@ -101,3 +98,4 @@ function Contact() {
 }
 
 export default Contact;
+
