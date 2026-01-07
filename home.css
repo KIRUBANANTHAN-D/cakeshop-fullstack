@@ -30,7 +30,7 @@
   padding: 40px 20px;
 }
 .banner {
-  width: 92%;          /* ✅ ADD THIS */
+  width: 92%;          
   height: 260px;
   margin: auto;
   border-radius: 16px;
@@ -48,3 +48,4 @@
   background-size: cover;
   background-position: center;
 }
+
