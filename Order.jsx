@@ -6,7 +6,6 @@ function Orders() {
   const [orders, setOrders] = useState([]);
   const [openId, setOpenId] = useState(null);
 
-  // 🔹 Fetch orders from Django API (WITH JWT)
   useEffect(() => {
     axios
       .get("http://127.0.0.1:8000/api/orders/", {
@@ -40,7 +39,7 @@ function Orders() {
         }
       )
       .then(() => {
-        // update UI without reload
+       
         setOrders(
           orders.map((order) =>
             order.id === id
@@ -143,3 +142,4 @@ function Orders() {
 }
 
 export default Orders;
+
