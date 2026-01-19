@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "../styles/cakedetails.css";
+import axios from "axios";
 
 function CakeDetails() {
   const { id } = useParams();
@@ -19,63 +20,61 @@ function CakeDetails() {
 
   const [step, setStep] = useState(1);
 
-  // customer details
+  /* Customer details */
   const [customerName, setCustomerName] = useState("");
   const [phone, setPhone] = useState("");
   const [altPhone, setAltPhone] = useState("");
 
-  // delivery address
+  /* Address */
   const [address, setAddress] = useState("");
 
-  // fetch cake
+  /* Fetch cake */
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/cakes/${id}/`)
       .then(res => res.json())
       .then(data => setCake(data))
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }, [id]);
 
-  // fetch branches
+  /* Fetch branches */
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/branches/")
       .then(res => res.json())
       .then(data => setBranches(data))
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }, []);
 
   if (!cake) return <h2>Loading...</h2>;
 
-  /* PRICE */
-  const basePrice = cake.price;
+  /* Price calculation */
+  const basePrice = Number(cake.price);
   const finalCakePrice = basePrice * selectedWeight;
   const deliveryCharge = deliveryType === "delivery" ? 60 : 0;
   const totalAmount = finalCakePrice + deliveryCharge;
 
-  /* PLACE ORDER */
-  const handlePlaceOrder = () => {
-  fetch("http://127.0.0.1:8000/api/orders/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
+  /* Place Order */
+  function placeOrder() {
+    const orderData = {
       name: customerName,
       phone: phone,
       cake: cake.id,
       weight: selectedWeight,
       egg_type: eggType,
       delivery_type: deliveryType,
-      address: address,         
-      total: totalAmount
-    })
-  })
-    .then(res => res.json())
-    .then(data => {
-      alert("Order placed! Order No: " + data.order_no);
+      address: address,
+      total: totalAmount,
+    };
 
-      // ✅ go to Orders page
-      window.location.href = "/orders";
-    })
-    .catch(err => console.log(err));
-};
+    axios
+      .post("http://127.0.0.1:8000/api/orders/", orderData)
+      .then(res => {
+        alert("Order placed! Order No: " + res.data.order_no);
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Order failed");
+      });
+  }
 
   return (
     <div className="cake-details-container">
@@ -87,13 +86,16 @@ function CakeDetails() {
             <img
               src={`http://127.0.0.1:8000${cake.image}`}
               alt={cake.name}
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = "/placeholder-cake.jpg";
+              }}
             />
           </div>
 
           <div className="cake-right">
             <h2>{cake.name}</h2>
-            <p>{cake.description}</p>
-
+            <p className="offer-text">{cake.description}</p>
             <p><b>Base Price:</b> Rs. {cake.price} / KG</p>
 
             <h4>Select Weight</h4>
@@ -126,30 +128,26 @@ function CakeDetails() {
             </div>
 
             <input
-              type="text"
               placeholder="Message on cake (optional)"
               value={message}
               onChange={e => setMessage(e.target.value)}
             />
 
             <h4>Delivery Type</h4>
-            <label>
-              <input
-                type="radio"
-                checked={deliveryType === "pickup"}
-                onChange={() => setDeliveryType("pickup")}
-              />
-              Pickup
-            </label>
-
-            <label>
-              <input
-                type="radio"
-                checked={deliveryType === "delivery"}
-                onChange={() => setDeliveryType("delivery")}
-              />
-              Delivery
-            </label>
+            <div className="option-row">
+              <button
+                className={deliveryType === "pickup" ? "active" : ""}
+                onClick={() => setDeliveryType("pickup")}
+              >
+                Pickup
+              </button>
+              <button
+                className={deliveryType === "delivery" ? "active" : ""}
+                onClick={() => setDeliveryType("delivery")}
+              >
+                Delivery
+              </button>
+            </div>
 
             {deliveryType === "pickup" && (
               <select>
@@ -209,39 +207,52 @@ function CakeDetails() {
       {/* STEP 3 */}
       {step === 3 && (
         <div className="cake-right">
-          <h2>Payment</h2>
+          <h3>Order Summary</h3>
 
-          <p><b>Cake:</b> {cake.name}</p>
-          <p><b>Weight:</b> {selectedWeight} KG</p>
-          <p><b>Total:</b> Rs. {totalAmount}</p>
+          <div className="payment-section">
+            <label className="payment-card">
+              <input
+                type="radio"
+                checked={paymentType === "cod"}
+                onChange={() => setPaymentType("cod")}
+              />
+              <span className="icon">💵</span>
+              <div>
+                <strong>Cash on Delivery</strong>
+                <p>Pay when you receive</p>
+              </div>
+            </label>
 
-          <label>
-            <input
-              type="radio"
-              checked={paymentType === "cod"}
-              onChange={() => setPaymentType("cod")}
-            />
-            Cash on Delivery
-          </label>
+            <label className="payment-card">
+              <input
+                type="radio"
+                checked={paymentType === "online"}
+                onChange={() => setPaymentType("online")}
+              />
+              <span className="icon">💳</span>
+              <div>
+                <strong>Online Payment</strong>
+                <p>UPI / Card / NetBanking</p>
+              </div>
+            </label>
+          </div>
 
-          <label>
-            <input
-              type="radio"
-              checked={paymentType === "online"}
-              onChange={() => setPaymentType("online")}
-            />
-            Online Payment
-          </label>
-
-          <button className="next-btn" onClick={handlePlaceOrder}>
+          <button className="place-order-btn" onClick={placeOrder}>
             Place Order
           </button>
         </div>
       )}
 
+      {/* BACK BUTTON */}
+      {step > 1 && (
+        <div className="back-wrapper">
+          <button className="back-btn" onClick={() => setStep(step - 1)}>
+            ← Back
+          </button>
+        </div>
+      )}
     </div>
   );
 }
 
 export default CakeDetails;
-
