@@ -1,145 +1,286 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  overflow-x: hidden;
+  margin: 0;
+  background: #fff1ec;
+  font-family: "Segoe UI", sans-serif;
 }
 
 /* =========================
-   CAKE DETAILS PAGE
+   MAIN CONTAINER
 ========================= */
-
 .cake-details-container {
   display: flex;
   gap: 40px;
-  padding: 40px;
-  max-width: 1100px;
-  margin: auto;
-  background: #fff8f5;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  margin-top: 90px;
+  max-width: 1150px;
+  margin: 100px auto 40px;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
 }
 
-/* LEFT IMAGE */
+/* =========================
+   LEFT IMAGE BLOCK
+========================= */
+.cake-left {
+  flex: 0 0 420px;
+}
+
+/* 🔥 IMPORTANT FIX */
 .cake-left img {
-  width: 420px;
-  height: auto;
-  border-radius: 12px;
+  width: 100%;
+  height: 420px;
   object-fit: cover;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-radius: 18px;
+  background: #f4f4f4;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+
+  display: block;
+  opacity: 1;
+  animation: none !important;
+  transition: none !important;
+  will-change: auto;
+  backface-visibility: hidden;
 }
 
-/* RIGHT CONTENT */
+/* Placeholder */
+.image-placeholder {
+  width: 100%;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f3f3;
+  color: #999;
+  border-radius: 18px;
+  font-size: 16px;
+}
+
+/* =========================
+   RIGHT CONTENT
+========================= */
 .cake-right {
   flex: 1;
 }
 
 .cake-right h2 {
-  color: #8b2c2c;
-  margin-bottom: 10px;
-}
-
-.cake-right p {
-  color: #555;
+  font-size: 28px;
+  color: #7a1e1e;
   margin-bottom: 8px;
 }
 
-/* OPTIONS */
+.cake-right p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+/* =========================
+   SECTION GAP
+========================= */
+.cake-right h4 {
+  margin-top: 18px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+/* =========================
+   BUTTON OPTIONS
+========================= */
 .option-row {
   display: flex;
   gap: 12px;
-  margin-bottom: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
 }
 
 .option-row button {
-  padding: 8px 16px;
-  border: 1px solid #e3bcbc;
+  padding: 10px 18px;
+  border-radius: 25px;
+  border: 2px solid #e6b7b7;
   background: #fff;
-  border-radius: 6px;
+  font-size: 14px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.option-row button:hover {
-  background: #f7dada;
-}
-
 .option-row button.active {
-  background: #8b2c2c;
+  background: linear-gradient(135deg, #7a1e1e, #b33636);
   color: #fff;
-  border-color: #8b2c2c;
+  border-color: transparent;
+  box-shadow: 0 6px 14px rgba(179,54,54,0.4);
 }
 
-/* INPUTS */
+/* =========================
+   INPUTS
+========================= */
 input,
 textarea,
 select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 10px;
   border: 1px solid #ddd;
-  outline: none;
+  margin-bottom: 14px;
+  font-size: 14px;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  border-color: #8b2c2c;
+  border-color: #b33636;
+  outline: none;
 }
 
-/* RADIO */
-label {
-  margin-right: 20px;
+/* =========================
+   PAYMENT SECTION
+========================= */
+.payment-section {
+  margin: 18px 0;
+}
+
+.payment-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.payment-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px;
+  margin-bottom: 12px;
   cursor: pointer;
-  color: #444;
+  transition: all 0.25s ease;
+  background: #fff;
 }
 
-/* TOTAL */
+.payment-card:hover {
+  border-color: #a52a2a;
+  box-shadow: 0 4px 14px rgba(165, 42, 42, 0.12);
+}
+
+.payment-card input {
+  accent-color: #a52a2a;
+  transform: scale(1.2);
+}
+
+.payment-card .icon {
+  font-size: 22px;
+}
+
+.payment-card div p {
+  font-size: 13px;
+  margin: 2px 0 0;
+  color: #666;
+}
+
+/* =========================
+   TOTAL PRICE
+========================= */
 h3 {
-  margin-top: 15px;
-  color: #8b2c2c;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #7a1e1e;
 }
 
-/* BUTTON */
+/* =========================
+   NEXT BUTTON
+========================= */
 .next-btn {
   width: 100%;
-  padding: 12px;
-  background: #8b2c2c;
+  padding: 14px;
+  background: linear-gradient(135deg, #7a1e1e, #b33636);
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
+  box-shadow: 0 8px 18px rgba(179,54,54,0.45);
 }
 
 .next-btn:hover {
-  background: #a63a3a;
+  transform: translateY(-2px);
 }
 
-/* STEP TRANSITION LOOK */
-.cake-right {
-  animation: fadeIn 0.4s ease-in;
+/* =========================
+   BACK BUTTON
+========================= */
+.back-btn {
+  background: none;
+  border: none;
+  color: #8b1e1e;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.back-btn:hover {
+  text-decoration: underline;
 }
 
-/* MOBILE */
+.back-wrapper {
+  padding: 10px 0;
+}
+
+/* =========================
+   ✅ FINAL PLACE ORDER BUTTON (ADDED)
+========================= */
+.place-order-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #a52a2a, #d64545);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(214, 69, 69, 0.45);
+  transition: all 0.25s ease;
+}
+
+.place-order-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(214, 69, 69, 0.6);
+}
+
+.place-order-btn:active {
+  transform: scale(0.98);
+}
+
+.place-order-btn:disabled {
+  background: #d3a1a1;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* =========================
+   MOBILE FIX
+========================= */
 @media (max-width: 768px) {
   .cake-details-container {
     flex-direction: column;
     padding: 20px;
   }
 
-  .cake-left img {
+  .cake-left {
     width: 100%;
+  }
+
+  .cake-left img {
+    height: 300px;
   }
 }
